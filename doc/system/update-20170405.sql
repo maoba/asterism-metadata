@@ -1,0 +1,1 @@
+ALTER TABLE system_permission ADD COLUMN parent_name VARCHAR(32) DEFAULT NULL COMMENT '父目录名称';

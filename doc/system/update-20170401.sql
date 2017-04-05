@@ -1,0 +1,1 @@
+alter table system_user add column login_type INT(2) default 0 comment '0:手机号码方式登入 1:邮件方式登入';

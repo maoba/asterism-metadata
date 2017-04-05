@@ -20,6 +20,16 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   
+  <!--根据角色id进行删除-->
+  <delete id="deleteByRoleId" parameterType="java.lang.Long">
+      delete from  system_user_role where role_id = #{roleId,jdbcType=BIGINT}
+  </delete>
+  
+  <!--根据用户的id进行删除-->
+  <delete id="deleteByUserId" parameterType="java.lang.Long">
+      delete from system_user_role where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  
   <!--根据用户id以及租户的id进行查询-->
   <select id="queryRole" resultMap="BaseResultMap">
      select 

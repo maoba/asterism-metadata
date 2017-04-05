@@ -14,6 +14,7 @@ CREATE TABLE `system_user` (
   `avatar` VARCHAR(32) DEFAULT NULL COMMENT '头像url地址',
   `position` VARCHAR(32) DEFAULT NULL COMMENT '职位信息',
   `status` INT DEFAULT 0 COMMENT '-1:删除 0：失效 1：生效',
+  `sex` TINYINT DEFAULT 0 COMMENT '0:男 1：女',
   `terminal_type` INT(2) DEFAULT 0 COMMENT '登入端类型 0:pc端  1:手机端',
   PRIMARY KEY (`id`),
   INDEX `tenant_id`(`tenant_id`),

@@ -83,7 +83,22 @@ public class UserEntity implements Serializable{
      */
     private Integer sex;
     
-    public Integer getSex() {
+    /**
+     * 登入方式
+     *  0：表示手机登入
+     *  1：表示邮箱登入
+     */
+    private Integer loginType;
+    
+    public Integer getLoginType() {
+		return loginType;
+	}
+
+	public void setLoginType(Integer loginType) {
+		this.loginType = loginType;
+	}
+
+	public Integer getSex() {
 		return sex;
 	}
 

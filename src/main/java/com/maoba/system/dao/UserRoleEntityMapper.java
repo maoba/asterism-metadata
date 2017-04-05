@@ -20,4 +20,8 @@ public interface UserRoleEntityMapper {
     int updateByPrimaryKey(UserRoleEntity record);
 
 	List<UserRoleEntity> queryRole(@Param(value = "userId") long userId,@Param(value = "tenantId") long tenantId);
+
+	void deleteByRoleId(@Param(value="roleId") Long roleId);
+
+	void deleteByUserId(@Param(value="userId") Long userId);
 }

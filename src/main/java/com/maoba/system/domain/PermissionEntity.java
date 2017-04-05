@@ -63,6 +63,11 @@ public class PermissionEntity implements Serializable{
     private Long parentId;
     
     /**
+     * 父节点名称
+     */
+    private String parentName;
+    
+    /**
      * 状态 -1:删除 0:失效 1:生效
      */
     private Integer status;
@@ -78,7 +83,15 @@ public class PermissionEntity implements Serializable{
     private Date updateTime;
 
     
-    public String getPermissionICO() {
+    public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public String getPermissionICO() {
 		return permissionICO;
 	}
 

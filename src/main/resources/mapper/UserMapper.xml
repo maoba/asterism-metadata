@@ -17,10 +17,11 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="terminal_type" jdbcType="INTEGER" property="terminalType"/>
     <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="login_type" jdbcType="INTEGER" property="loginType" />
   </resultMap> 
   <sql id="Base_Column_List">
     id, user_name, user_pwd, tenant_id, tenant_name, cell_phone_num, email, salt, create_time, 
-    update_time, avatar, position, status ,terminal_type, sex
+    update_time, avatar, position, status ,terminal_type, sex ,login_type
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -40,12 +41,12 @@
   
   <!--根据邮箱查询-->
   <select id="queryUserByEmail" resultMap="BaseResultMap">
-     select * from system_user where email = #{email} and terminal_type = #{terminalType}
+     select * from system_user where email = #{email,jdbcType=VARCHAR} and terminal_type = #{terminalType,jdbcType=INTEGER}
   </select>
   
   <!--根据手机号码查询-->
   <select id="queryUserByCellPhone" resultMap="BaseResultMap">
-    select * from system_user where cell_phone_num = #{cellPhoneNum} and terminal_type = #{terminalType}
+    select * from system_user where cell_phone_num = #{cellPhoneNum,jdbcType=VARCHAR} and terminal_type = #{terminalType,jdbcType=INTEGER}
   </select>
   
   <!--根据名称以及租户的Id进行查询-->
@@ -72,12 +73,13 @@
       tenant_id, tenant_name, cell_phone_num, 
       email, salt, create_time, 
       update_time, avatar, position, 
-      status,terminal_type,sex)
+      status,terminal_type,sex,login_type)
     values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
       #{tenantId,jdbcType=BIGINT}, #{tenantName,jdbcType=VARCHAR}, #{cellPhoneNum,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{avatar,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{terminalType,jdbcType=INTEGER},#{sex,jdbcType=TINYINT})
+      #{status,jdbcType=INTEGER}, #{terminalType,jdbcType=INTEGER},#{sex,jdbcType=TINYINT},
+      #{loginType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.maoba.system.domain.UserEntity">
     insert into system_user
@@ -127,6 +129,9 @@
       <if test="sex != null">
         sex,
       </if>
+      <if test="loginType != null">
+        login_type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -172,7 +177,10 @@
          #{terminal_type,jdbcType=INTEGER},
       </if>
       <if test="sex !=null">
-         #{sex,jdbcType=TINYINT}
+         #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="loginType !=null">
+         #{login_type,jdbcType=INTEGER}
       </if>
     </trim>
   </insert>
@@ -221,6 +229,9 @@
       <if test="sex !=null">
         sex = #{sex,jdbcType=TINYINT},
       </if>
+      <if test="loginType !=null">
+        loginType = #{loginType,,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -239,7 +250,8 @@
       position = #{position,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       terminal_type = #{terminalType,jdbcType=INTEGER},
-      sex = #{sex,jdbcType=TINYINT}
+      sex = #{sex,jdbcType=TINYINT},
+      login_type = #{loginType,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

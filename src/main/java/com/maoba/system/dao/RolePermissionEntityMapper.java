@@ -20,4 +20,6 @@ public interface RolePermissionEntityMapper {
     int updateByPrimaryKey(RolePermissionEntity record);
 
 	List<RolePermissionEntity> queryRolePermissionByRoleId(@Param(value="roleId") Long roleId);
+
+	void deleteByRoleId(@Param(value="roleId") Long roleId);
 }

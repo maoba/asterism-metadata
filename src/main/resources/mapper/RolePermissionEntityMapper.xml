@@ -27,6 +27,11 @@
     where role_id = #{roleId,jdbcType=BIGINT}
   </select>
   
+  <!--根据roleId删除角色权限关系-->
+  <delete id="deleteByRoleId" parameterType="java.lang.Long">
+     delete from system_role_permission where role_id = #{roleId,jdbcType=BIGINT}
+  </delete>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from system_role_permission
     where id = #{id,jdbcType=BIGINT}
