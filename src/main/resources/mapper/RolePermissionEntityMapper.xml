@@ -32,6 +32,11 @@
      delete from system_role_permission where role_id = #{roleId,jdbcType=BIGINT}
   </delete>
   
+  <!--根据权限id进行删除-->
+  <delete id="deleteByPermissionId" parameterType="java.lang.Long">
+     delete from system_role_permission where permission_id = #{permissionId,jdbcType=BIGINT}
+  </delete>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from system_role_permission
     where id = #{id,jdbcType=BIGINT}

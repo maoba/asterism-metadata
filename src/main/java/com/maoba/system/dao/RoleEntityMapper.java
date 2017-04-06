@@ -20,4 +20,6 @@ public interface RoleEntityMapper {
     int updateByPrimaryKey(RoleEntity record);
     
 	List<RoleEntity> queryRolesByName(@Param(value="name") String name,@Param(value="tenantId") Long tenantId);
+
+	List<RoleEntity> queryRolesByTeanantId(@Param(value="tenantId") Long tenantId);
 }

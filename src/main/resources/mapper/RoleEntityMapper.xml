@@ -32,6 +32,11 @@
        and tenant_id = #{tenantId}
   </select>
   
+  <!--根据租户的id进行查询-->
+  <select id="queryRolesByTeanantId" resultMap="BaseResultMap">
+     select * from system_role where tenant_id = #{tenantId}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from system_role
     where id = #{id,jdbcType=BIGINT}

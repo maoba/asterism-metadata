@@ -22,4 +22,6 @@ public interface RolePermissionEntityMapper {
 	List<RolePermissionEntity> queryRolePermissionByRoleId(@Param(value="roleId") Long roleId);
 
 	void deleteByRoleId(@Param(value="roleId") Long roleId);
+  
+	void deleteByPermissionId(@Param(value="permissionId")Long permissionId);
 }

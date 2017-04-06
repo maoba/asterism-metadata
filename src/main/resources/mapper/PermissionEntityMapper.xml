@@ -42,6 +42,11 @@
      select * from system_permission where status = 1 and permission_type = 0
   </select>
   
+  <!--根据租户的id查询权限-->
+  <select id="queryPermissionByTenantId" resultMap="BaseResultMap">
+     select * from system_permission where status = 1 and tenant_id = #{tenantId}
+  </select>
+  
   <!--分页查询-->
   <select id="queryPermissionByPage" resultMap="BaseResultMap">
       select * from system_permission where 1 = 1
