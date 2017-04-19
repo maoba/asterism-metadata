@@ -26,7 +26,7 @@ CREATE TABLE `system_user` (
 DROP TABLE IF EXISTS `system_user_role`;
 CREATE TABLE `system_user_role` (
   `id` BIGINT NOT NULL  AUTO_INCREMENT COMMENT '主键',
-  `role_id` VARCHAR(64) DEFAULT NULL COMMENT '角色Id',
+  `role_id` BIGINT(64) DEFAULT 0 COMMENT '角色Id',
   `role_name`  VARCHAR(64) DEFAULT NULL COMMENT '角色名称',
   `role_code` VARCHAR(64) DEFAULT NULL COMMENT '角色编码',
   `user_id` BIGINT DEFAULT 0 COMMENT '用户id',

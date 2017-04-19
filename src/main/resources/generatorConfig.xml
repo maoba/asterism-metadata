@@ -24,14 +24,17 @@
         </commentGenerator>  
   
         <!--添加你的 JDBC 连接信息-->  
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.223.128:3306/asterism" userId="root" password="root"/>  
+        <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.223.128:3306/asterism" userId="root" password="root"/>  --> 
+        
+        
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://123.206.129.58:3306/platform" userId="root" password="1548178600lu!"/>
   
         <javaTypeResolver>  
             <property name="forceBigDecimals" value="false"/>  
         </javaTypeResolver>  
   
         <!--要生成的 pojo 模块位置-->  
-        <javaModelGenerator targetPackage="com.maoba.system.domain" targetProject="src/main/java">  
+        <javaModelGenerator targetPackage="com.maoba.tenant.domain" targetProject="src/main/java">  
             <property name="enableSubPackages" value="false"/>  
             <property name="trimStrings" value="true"/>  
         </javaModelGenerator>  
@@ -42,15 +45,14 @@
         </sqlMapGenerator>  
   
         <!--要生成的 Mapper 接口类  如果要生成基于注解的形式，type设置为ANNOTATEDMAPPER -->  
-        <javaClientGenerator targetPackage="com.maoba.system.dao" targetProject="src/main/java" type="XMLMAPPER">  
+        <javaClientGenerator targetPackage="com.maoba.tenant.dao" targetProject="src/main/java" type="XMLMAPPER">  
             <property name="enableSubPackages" value="false"/>  
         </javaClientGenerator>  
   
-  
         <!--要根据哪张表生成，要在这里配置-->  
         <!--用百分号表示生成所有表,可以直接省去一个一个写 <table tableName="%" /> -->  
-        <table tableName="system_user_role" 
-        domainObjectName="UserRoleEntity"
+        <table tableName="op_access_rules" 
+        domainObjectName="OpAccessRulesEntity"
         enableCountByExample="false" 
         enableDeleteByExample="false" 
         enableSelectByExample="false"
